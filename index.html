@@ -12,8 +12,12 @@
      3. Push to a GitHub repo named  <username>.github.io  (or any
         repo with Pages enabled) and you're live.
      ============================================================ -->
-<title>[Eric Fisher] — Mechanical Design &amp; CAD Automation</title>
-<meta name="description" content="Freelance mechanical design: sheet metal and composite DFM, fixtures and tooling, CAD automation. [San Antonio], Texas.">
+<title>Eric Fisher — Mechanical Design &amp; CAD Automation</title>
+<meta name="description" content="Freelance mechanical design: legacy drawing recovery, sheet metal and composite DFM, fixtures and tooling, CAD automation. San Antonio, Texas.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Eric Fisher — Mechanical Design &amp; CAD Automation">
+<meta property="og:description" content="Freelance mechanical design: legacy drawing recovery, sheet metal and composite DFM, fixtures and tooling, CAD automation. San Antonio, Texas.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2333586E'/%3E%3Ctext x='16' y='22' font-family='Arial, sans-serif' font-weight='700' font-size='15' fill='%23F6F7F5' text-anchor='middle'%3EEF%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -83,14 +87,14 @@ nav a{
 nav a:hover{color:var(--steel-dark)}
 
 /* ---- hero ---------------------------------------------------- */
-.hero{padding:88px 0 72px;border-bottom:1px solid var(--line)}
+.hero{padding:56px 0 44px;border-bottom:1px solid var(--line)}
 .hero h1{
   font-size:clamp(34px,5.2vw,58px);
   font-weight:600;line-height:1.08;letter-spacing:-.015em;
   max-width:15ch;margin:18px 0 26px;
 }
 .hero p.lede{max-width:56ch;color:var(--muted);font-size:19px}
-.hero .cta-row{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero .cta-row{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .btn{
   display:inline-block;background:var(--steel);color:#fff;
   text-decoration:none;font-weight:500;font-size:15px;
@@ -102,9 +106,9 @@ nav a:hover{color:var(--steel-dark)}
 .btn.ghost:hover{background:var(--ink);color:var(--paper)}
 
 /* ---- section scaffolding ------------------------------------- */
-section{padding:72px 0;border-bottom:1px solid var(--line)}
+section{padding:44px 0;border-bottom:1px solid var(--line)}
 section:last-of-type{border-bottom:none}
-.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:44px}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:28px}
 .sec-head h2{font-size:26px;font-weight:600;letter-spacing:-.01em}
 .sec-head .rule{flex:1;height:1px;background:var(--line)}
 
@@ -112,11 +116,17 @@ section:last-of-type{border-bottom:none}
 .caps{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
 @media (max-width:760px){ .caps{grid-template-columns:1fr} }
 .cap{
-  padding:30px 28px 34px;border-bottom:1px solid var(--line);
+  padding:22px 24px 24px;border-bottom:1px solid var(--line);
 }
-.cap:nth-child(odd){border-right:1px solid var(--line)}
-@media (max-width:760px){ .cap:nth-child(odd){border-right:none} }
-.cap h3{font-size:18px;font-weight:600;margin:10px 0 10px}
+.cap:nth-child(even){border-right:1px solid var(--line)}
+@media (max-width:760px){ .cap:nth-child(even){border-right:none} }
+.cap.wide{
+  grid-column:1 / -1;
+  border-right:none !important;
+  background:var(--panel);
+}
+.cap.wide p{max-width:72ch}
+.cap h3{font-size:18px;font-weight:600;margin:8px 0 8px}
 .cap p{color:var(--muted);font-size:15.5px}
 .cap .tag{
   font-family:'IBM Plex Mono',monospace;font-size:11.5px;
@@ -135,7 +145,7 @@ section:last-of-type{border-bottom:none}
   background:var(--panel);border:1px solid var(--line);
   padding:10px;
 }
-.figure img{width:100%;display:block;background:var(--line-soft)}
+.figure img{width:100%;height:auto;display:block;background:var(--line-soft)}
 .figure figcaption{
   font-family:'IBM Plex Mono',monospace;font-size:11.5px;
   color:var(--muted);padding:10px 4px 2px;letter-spacing:.04em;
@@ -166,11 +176,14 @@ section:last-of-type{border-bottom:none}
 
 /* ---- about ---------------------------------------------------- */
 .about{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start}
-@media (max-width:720px){ .about{grid-template-columns:1fr} .portrait{max-width:220px} }
+@media (max-width:720px){ .about{grid-template-columns:1fr} .portrait{width:180px;height:180px} }
 .portrait{
+  width:220px;height:220px;margin:0 auto;
   background:var(--panel);border:1px solid var(--line);padding:8px;
+  border-radius:50%;overflow:hidden;
+  clip-path:circle(50%);
 }
-.portrait img{width:100%;display:block;background:var(--line-soft)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block;background:var(--line-soft)}
 .about p{color:var(--muted);max-width:60ch}
 .about p + p{margin-top:14px}
 .about strong{color:var(--ink);font-weight:600}
@@ -229,7 +242,7 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
         buildable package without adding headcount.
       </p>
       <div class="cta-row">
-        <a class="btn" href="mailto:[YOU@EXAMPLE.COM]">Start a project</a>
+        <a class="btn" href="mailto:eric@ejfisher.com">Start a project</a>
         <a class="btn ghost" href="#work">See recent work</a>
       </div>
     </div>
@@ -238,6 +251,17 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
     <section id="capabilities">
       <div class="sec-head"><h2>Capabilities</h2><div class="rule"></div></div>
       <div class="caps">
+        <div class="cap wide">
+          <span class="tag">DRAWING RESCUE</span>
+          <h3>Old prints into working CAD</h3>
+          <p>Plants running 60-year-old equipment often have exactly one copy of the
+             drawing that keeps it alive — a faded blueline or a torn vellum in a flat
+             file. I rebuild deteriorating legacy prints into accurate 3D models and
+             fresh, revision-controlled drawings, so you can quote parts, plan
+             maintenance, and stop worrying about the day the original becomes
+             unreadable. Working from scans, photos, and field measurements of the
+             part itself where the print falls short.</p>
+        </div>
         <div class="cap">
           <span class="tag">DFM</span>
           <h3>Design for manufacture</h3>
@@ -278,49 +302,49 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
 
       <div class="work-item">
         <figure class="figure">
-          <!-- IMAGE SLOT: a clean render or photo, ideally on a plain
-               background. CAD screenshots are fine if decluttered. -->
-          <img src="img/project-1.jpg" alt="[Describe the part or assembly shown]" width="1200" height="800">
-          <figcaption>FIG. 1 — [SHORT CAPTION, e.g. “Bellmouth nozzle, FRP layup over aluminum mandrel”]</figcaption>
+          <!-- Placeholder illustration. Replace with a real before/after
+               when you have one — this is your most persuasive image slot. -->
+          <img src="img/project-3.svg" alt="Before and after: a faded, stained 1962 blueprint of a pulley beside a crisp rebuilt CAD drawing of the same part" width="1200" height="800">
+          <figcaption>FIG. 1 — Legacy print rebuilt as a dimensioned CAD drawing (placeholder illustration)</figcaption>
         </figure>
         <div>
-          <h3>[Project title]</h3>
+          <h3>[Drawing rescue project title]</h3>
           <dl>
-            <dt>Problem</dt><dd>[What the client needed and what was in the way.]</dd>
-            <dt>Approach</dt><dd>[What you designed and the key decisions — materials, process, tooling.]</dd>
-            <dt>Outcome</dt><dd>[The result, with a number if you have one: cost, hours saved, first-pass yield.]</dd>
+            <dt>Problem</dt><dd>[e.g. "Sole surviving print for a 1960s conveyor sheave was fading; plant couldn't quote replacement parts."]</dd>
+            <dt>Approach</dt><dd>[e.g. "Rebuilt the part as a 3D model from the scanned print plus field measurements; issued a new revision-controlled drawing package."]</dd>
+            <dt>Outcome</dt><dd>[e.g. "Part quoted by three local shops within a week; drawing now lives in the plant's document system."]</dd>
           </dl>
         </div>
       </div>
 
       <div class="work-item">
         <figure class="figure">
-          <!-- IMAGE SLOT: automation work shows well as a before/after
-               screenshot or a short GIF of the macro running. -->
-          <img src="img/project-2.jpg" alt="[Describe the image]" width="1200" height="800">
-          <figcaption>FIG. 2 — [SHORT CAPTION]</figcaption>
+          <!-- Placeholder illustration. Automation work also shows well as a
+               before/after screenshot or a short GIF of a macro running. -->
+          <img src="img/project-2.svg" alt="Flat pattern of a sheet metal motor mount bracket with bend lines and hole callouts, beside the formed part" width="1200" height="800">
+          <figcaption>FIG. 2 — 11GA sheet metal bracket, flat pattern with bend callouts (placeholder illustration)</figcaption>
         </figure>
         <div>
-          <h3>[Project title]</h3>
+          <h3>[Sheet metal / DFM project title]</h3>
           <dl>
-            <dt>Problem</dt><dd>[e.g. “Engineering team spent ~6 hrs/week exporting flat patterns by hand.”]</dd>
-            <dt>Approach</dt><dd>[e.g. “SolidWorks VBA macro that detects sheet metal parts and batch-exports DXFs.”]</dd>
-            <dt>Outcome</dt><dd>[e.g. “Export time cut from hours to minutes; zero missed revisions since.”]</dd>
+            <dt>Problem</dt><dd>[e.g. "Bracket design required welding; client wanted a single formed part their brake could handle."]</dd>
+            <dt>Approach</dt><dd>[e.g. "Redesigned as one flat pattern with corner reliefs and bend allowances matched to their tooling."]</dd>
+            <dt>Outcome</dt><dd>[e.g. "Part count 3 → 1; welding eliminated; unit cost down 40%."]</dd>
           </dl>
         </div>
       </div>
 
       <div class="work-item">
         <figure class="figure">
-          <img src="img/project-3.jpg" alt="[Describe the image]" width="1200" height="800">
-          <figcaption>FIG. 3 — [SHORT CAPTION]</figcaption>
+          <img src="img/project-1.svg" alt="Engineering drawing of an 18-tooth spur gear with bore, keyway, lightening holes, and a hatched section view" width="1200" height="800">
+          <figcaption>FIG. 3 — 18T spur gear with section view (placeholder illustration)</figcaption>
         </figure>
         <div>
-          <h3>[Project title]</h3>
+          <h3>[Machined part / automation project title]</h3>
           <dl>
-            <dt>Problem</dt><dd>[…]</dd>
-            <dt>Approach</dt><dd>[…]</dd>
-            <dt>Outcome</dt><dd>[…]</dd>
+            <dt>Problem</dt><dd>[e.g. "Engineering team spent ~6 hrs/week exporting drawings and flat patterns by hand."]</dd>
+            <dt>Approach</dt><dd>[e.g. "SolidWorks VBA macro that detects sheet metal parts and batch-exports DXFs and PDFs."]</dd>
+            <dt>Outcome</dt><dd>[e.g. "Export time cut from hours to minutes; zero missed revisions since."]</dd>
           </dl>
         </div>
       </div>
@@ -364,16 +388,21 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
         <div class="portrait">
           <!-- OPTIONAL portrait. If you skip it, delete this .portrait div;
                the text will fill the width on its own. -->
-          <img src="img/portrait.jpg" alt="Portrait of [Eric Fisher]" width="600" height="750">
+          <img src="img/portrait.jpg" alt="Portrait of Eric Fisher" width="600" height="600">
         </div>
         <div>
           <p><strong>Eric Fisher</strong> is a mechanical designer based in
              San Antonio, Texas, serving fabrication shops and engineering teams
              along the I-35 corridor and remotely.</p>
-          <p>[2–3 sentences of background: the industries you've worked in,
-             the kinds of systems you've designed, and what you're like to
-             work with. Plain and specific beats impressive-sounding.]</p>
-          <p>Tools: SolidWorks · FreeCAD · Python · VBA · [others]</p>
+          <p>Fifteen years split between fabrication shops, OEM product
+             teams, and heavy-industrial plants — including cement and
+             aggregate operations running equipment that doesn't get to
+             stop for a redesign. Work has ranged from sheet metal
+             enclosures and conveyor systems to fixtures, tooling, and
+             industrial piping and sanitary tubing.</p>
+          <p>Fast turnaround, straight answers, and drawings that account
+             for what the shop floor can actually hold to tolerance.</p>
+          <p>Tools: SolidWorks · FreeCAD · Python · VBA</p>
         </div>
       </div>
     </section>
@@ -390,11 +419,11 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
     </div>
     <div class="tb-cell">
       <span class="lbl">Contact</span>
-      <a href="mailto:[YOU@EXAMPLE.COM]">[YOU@EXAMPLE.COM]</a>
+      <a href="mailto:eric@ejfisher.com">eric@ejfisher.com</a>
     </div>
     <div class="tb-cell">
       <span class="lbl">Drawn by</span>
-      [INITIALS]
+      E.F.
     </div>
     <div class="tb-cell">
       <span class="lbl">Rev / Date</span>
