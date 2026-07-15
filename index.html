@@ -77,7 +77,7 @@ nav a{
 nav a:hover{color:var(--steel-dark)}
 
 /* ---- hero ---------------------------------------------------- */
-.hero{padding:56px 0 44px;border-bottom:1px solid var(--line)}
+.hero{padding:56px 0 44px}
 .hero h1{
   font-size:clamp(34px,5.2vw,58px);
   font-weight:600;line-height:1.08;letter-spacing:-.015em;
@@ -96,14 +96,14 @@ nav a:hover{color:var(--steel-dark)}
 .btn.ghost:hover{background:var(--ink);color:var(--paper)}
 
 /* ---- section scaffolding ------------------------------------- */
-section{padding:44px 0;border-bottom:1px solid var(--line)}
-section:last-of-type{border-bottom:none}
-.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:28px}
-.sec-head h2{font-size:26px;font-weight:600;letter-spacing:-.01em}
+section{padding:44px 0}
+.sec-head{display:flex;align-items:center;gap:18px;margin-bottom:28px}
+.sec-head::before{content:"";flex:1;height:1px;background:var(--line)}
+.sec-head h2{font-size:26px;font-weight:600;letter-spacing:-.01em;text-align:center}
 .sec-head .rule{flex:1;height:1px;background:var(--line)}
 
 /* ---- capabilities -------------------------------------------- */
-.caps{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.caps{display:grid;grid-template-columns:1fr 1fr;gap:0}
 @media (max-width:760px){ .caps{grid-template-columns:1fr} }
 .cap{
   padding:22px 24px 24px;border-bottom:1px solid var(--line);
@@ -125,12 +125,9 @@ section:last-of-type{border-bottom:none}
 
 /* ---- work ---------------------------------------------------- */
 .work-item{
-  display:grid;grid-template-columns:1.15fr .85fr;gap:44px;
   padding:44px 0;border-top:1px solid var(--line);
-  align-items:start;
 }
 .work-item:first-of-type{border-top:none;padding-top:0}
-@media (max-width:820px){ .work-item{grid-template-columns:1fr;gap:24px} }
 .figure{
   background:var(--panel);border:1px solid var(--line);
   padding:10px;
@@ -143,7 +140,7 @@ section:last-of-type{border-bottom:none}
 .work-item h3{font-size:20px;font-weight:600;margin:0}
 .work-toggle{
   display:flex;align-items:center;justify-content:space-between;gap:16px;
-  width:100%;margin:6px 0 0;padding:0;border:none;background:none;
+  width:100%;margin:0;padding:0;border:none;background:none;
   font:inherit;color:inherit;text-align:left;cursor:pointer;
 }
 .work-toggle .chevron{
@@ -154,8 +151,12 @@ section:last-of-type{border-bottom:none}
 .work-toggle[aria-expanded="true"] .chevron{transform:rotate(-135deg)}
 .work-details{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
 .work-toggle[aria-expanded="true"] + .work-details{grid-template-rows:1fr}
-.work-details-inner{overflow:hidden}
-.work-item dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px;padding-top:14px}
+.work-details-inner{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:44px;
+  align-items:start;overflow:hidden;padding-top:24px;
+}
+@media (max-width:820px){ .work-details-inner{grid-template-columns:1fr;gap:24px} }
+.work-item dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px}
 .work-item dt{
   font-family:'IBM Plex Mono',monospace;font-size:11.5px;
   letter-spacing:.1em;text-transform:uppercase;color:var(--steel);
@@ -192,6 +193,27 @@ section:last-of-type{border-bottom:none}
 .about p + p{margin-top:14px}
 .about strong{color:var(--ink);font-weight:600}
 
+/* ---- quote form ------------------------------------------------ */
+.quote-form{max-width:640px;margin:0 auto;display:grid;gap:20px;text-align:center}
+.quote-form .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:560px){ .quote-form .row{grid-template-columns:1fr} }
+.quote-form .field{display:grid;gap:6px;justify-items:start;text-align:left}
+.quote-form label{
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--steel);
+}
+.quote-form input,.quote-form textarea{
+  font:inherit;font-size:15px;color:var(--ink);background:var(--panel);
+  border:1px solid var(--line);padding:10px 12px;width:100%;text-align:left;
+}
+.quote-form input:focus,.quote-form textarea:focus{outline:2px solid var(--steel);outline-offset:2px}
+.quote-form textarea{resize:vertical;min-height:120px}
+.quote-form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.quote-form .submit-row{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.quote-status{font-size:14px;color:var(--muted)}
+.quote-status[data-state="ok"]{color:var(--steel)}
+.quote-status[data-state="error"]{color:#b3261e}
+
 /* ---- title block footer --------------------------------------- */
 footer{margin-top:auto;border-top:1px solid var(--ink)}
 .titleblock{
@@ -226,6 +248,7 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
       <a href="#capabilities">Capabilities</a>
       <a href="#work">Work</a>
       <a href="#process">Process</a>
+      <a href="#quote">Quote</a>
       <a href="#about">About</a>
     </nav>
   </div>
@@ -244,7 +267,7 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
         buildable package without adding headcount.
       </p>
       <div class="cta-row">
-        <a class="btn" href="mailto:eric@ejfisher.com">Contact Me</a>
+        <a class="btn" href="#quote">Request a Quote</a>
         <a class="btn ghost" href="#work">See recent work</a>
       </div>
     </div>
@@ -297,67 +320,61 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
       <div class="sec-head"><h2>Selected work</h2><div class="rule"></div></div>
 
       <div class="work-item">
-        <figure class="figure">
-          <img src="img/project-3.svg" alt="Before and after: a faded, stained 1962 blueprint of a pulley beside a crisp rebuilt CAD drawing of the same part" width="1200" height="800">
-          <figcaption>FIG. 1 — Legacy print rebuilt as a dimensioned CAD drawing (placeholder illustration)</figcaption>
-        </figure>
-        <div>
-          <button class="work-toggle" aria-expanded="false">
-            <h3>[Drawing rescue project title]</h3>
-            <span class="chevron" aria-hidden="true"></span>
-          </button>
-          <div class="work-details">
-            <div class="work-details-inner">
-              <dl>
-                <dt>Problem</dt><dd>[e.g. "Sole surviving print for a 1960s conveyor sheave was fading; plant couldn't quote replacement parts."]</dd>
-                <dt>Approach</dt><dd>[e.g. "Rebuilt the part as a 3D model from the scanned print plus field measurements; issued a new revision-controlled drawing package."]</dd>
-                <dt>Outcome</dt><dd>[e.g. "Part quoted by three local shops within a week; drawing now lives in the plant's document system."]</dd>
-              </dl>
-            </div>
+        <button class="work-toggle" aria-expanded="false">
+          <h3>[Drawing rescue project title]</h3>
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+        <div class="work-details">
+          <div class="work-details-inner">
+            <figure class="figure">
+              <img src="img/project-3.svg" alt="Before and after: a faded, stained 1962 blueprint of a pulley beside a crisp rebuilt CAD drawing of the same part" width="1200" height="800">
+              <figcaption>FIG. 1 — Legacy print rebuilt as a dimensioned CAD drawing (placeholder illustration)</figcaption>
+            </figure>
+            <dl>
+              <dt>Problem</dt><dd>[e.g. "Sole surviving print for a 1960s conveyor sheave was fading; plant couldn't quote replacement parts."]</dd>
+              <dt>Approach</dt><dd>[e.g. "Rebuilt the part as a 3D model from the scanned print plus field measurements; issued a new revision-controlled drawing package."]</dd>
+              <dt>Outcome</dt><dd>[e.g. "Part quoted by three local shops within a week; drawing now lives in the plant's document system."]</dd>
+            </dl>
           </div>
         </div>
       </div>
 
       <div class="work-item">
-        <figure class="figure">
-          <img src="img/project-2.svg" alt="Flat pattern of a sheet metal motor mount bracket with bend lines and hole callouts, beside the formed part" width="1200" height="800">
-          <figcaption>FIG. 2 — 11GA sheet metal bracket, flat pattern with bend callouts (placeholder illustration)</figcaption>
-        </figure>
-        <div>
-          <button class="work-toggle" aria-expanded="false">
-            <h3>[Sheet metal / DFM project title]</h3>
-            <span class="chevron" aria-hidden="true"></span>
-          </button>
-          <div class="work-details">
-            <div class="work-details-inner">
-              <dl>
-                <dt>Problem</dt><dd>[e.g. "Bracket design required welding; client wanted a single formed part their brake could handle."]</dd>
-                <dt>Approach</dt><dd>[e.g. "Redesigned as one flat pattern with corner reliefs and bend allowances matched to their tooling."]</dd>
-                <dt>Outcome</dt><dd>[e.g. "Part count 3 → 1; welding eliminated; unit cost down 40%."]</dd>
-              </dl>
-            </div>
+        <button class="work-toggle" aria-expanded="false">
+          <h3>[Sheet metal / DFM project title]</h3>
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+        <div class="work-details">
+          <div class="work-details-inner">
+            <figure class="figure">
+              <img src="img/project-2.svg" alt="Flat pattern of a sheet metal motor mount bracket with bend lines and hole callouts, beside the formed part" width="1200" height="800">
+              <figcaption>FIG. 2 — 11GA sheet metal bracket, flat pattern with bend callouts (placeholder illustration)</figcaption>
+            </figure>
+            <dl>
+              <dt>Problem</dt><dd>[e.g. "Bracket design required welding; client wanted a single formed part their brake could handle."]</dd>
+              <dt>Approach</dt><dd>[e.g. "Redesigned as one flat pattern with corner reliefs and bend allowances matched to their tooling."]</dd>
+              <dt>Outcome</dt><dd>[e.g. "Part count 3 → 1; welding eliminated; unit cost down 40%."]</dd>
+            </dl>
           </div>
         </div>
       </div>
 
       <div class="work-item">
-        <figure class="figure">
-          <img src="img/project-1.svg" alt="Engineering drawing of an 18-tooth spur gear with bore, keyway, lightening holes, and a hatched section view" width="1200" height="800">
-          <figcaption>FIG. 3 — 18T spur gear with section view (placeholder illustration)</figcaption>
-        </figure>
-        <div>
-          <button class="work-toggle" aria-expanded="false">
-            <h3>[Machined part / automation project title]</h3>
-            <span class="chevron" aria-hidden="true"></span>
-          </button>
-          <div class="work-details">
-            <div class="work-details-inner">
-              <dl>
-                <dt>Problem</dt><dd>[e.g. "Engineering team spent ~6 hrs/week exporting drawings and flat patterns by hand."]</dd>
-                <dt>Approach</dt><dd>[e.g. "SolidWorks VBA macro that detects sheet metal parts and batch-exports DXFs and PDFs."]</dd>
-                <dt>Outcome</dt><dd>[e.g. "Export time cut from hours to minutes; zero missed revisions since."]</dd>
-              </dl>
-            </div>
+        <button class="work-toggle" aria-expanded="false">
+          <h3>[Machined part / automation project title]</h3>
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+        <div class="work-details">
+          <div class="work-details-inner">
+            <figure class="figure">
+              <img src="img/project-1.svg" alt="Engineering drawing of an 18-tooth spur gear with bore, keyway, lightening holes, and a hatched section view" width="1200" height="800">
+              <figcaption>FIG. 3 — 18T spur gear with section view (placeholder illustration)</figcaption>
+            </figure>
+            <dl>
+              <dt>Problem</dt><dd>[e.g. "Engineering team spent ~6 hrs/week exporting drawings and flat patterns by hand."]</dd>
+              <dt>Approach</dt><dd>[e.g. "SolidWorks VBA macro that detects sheet metal parts and batch-exports DXFs and PDFs."]</dd>
+              <dt>Outcome</dt><dd>[e.g. "Export time cut from hours to minutes; zero missed revisions since."]</dd>
+            </dl>
           </div>
         </div>
       </div>
@@ -391,6 +408,36 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
           </div>
         </div>
       </div>
+    </section>
+
+    <section id="quote">
+      <div class="sec-head"><h2>Request a quote</h2><div class="rule"></div></div>
+      <form class="quote-form" action="https://formspree.io/f/maqrqyrw" method="POST">
+        <div class="row">
+          <div class="field">
+            <label for="q-name">Name</label>
+            <input id="q-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="q-email">Email</label>
+            <input id="q-email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="q-company">Company</label>
+          <input id="q-company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="q-details">Project details</label>
+          <textarea id="q-details" name="details" required placeholder="Part type, quantity, timeline, and any drawings or files you can share."></textarea>
+        </div>
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_subject" value="New quote request — gonmd.github.io">
+        <div class="submit-row">
+          <button class="btn" type="submit">Send request</button>
+          <span class="quote-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
     </section>
 
     <section id="about">
@@ -452,6 +499,33 @@ document.querySelectorAll('.work-toggle').forEach(function(btn){
     btn.setAttribute('aria-expanded', String(!expanded));
   });
 });
+
+var quoteForm = document.querySelector('.quote-form');
+if (quoteForm) {
+  var quoteStatus = quoteForm.querySelector('.quote-status');
+  quoteForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    quoteStatus.dataset.state = '';
+    quoteStatus.textContent = 'Sending…';
+    fetch(quoteForm.action, {
+      method: 'POST',
+      body: new FormData(quoteForm),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if (res.ok) {
+        quoteForm.reset();
+        quoteStatus.dataset.state = 'ok';
+        quoteStatus.textContent = "Thanks — I'll get back to you shortly.";
+      } else {
+        quoteStatus.dataset.state = 'error';
+        quoteStatus.textContent = 'Something went wrong. Please try again, or email eric@ejfisher.com directly.';
+      }
+    }).catch(function(){
+      quoteStatus.dataset.state = 'error';
+      quoteStatus.textContent = 'Something went wrong. Please try again, or email eric@ejfisher.com directly.';
+    });
+  });
+}
 </script>
 </body>
 </html>
