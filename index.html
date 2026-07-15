@@ -77,7 +77,14 @@ nav a{
 nav a:hover{color:var(--steel-dark)}
 
 /* ---- hero ---------------------------------------------------- */
-.hero{padding:56px 0 44px}
+.hero{
+  display:grid;grid-template-columns:1fr minmax(280px,360px);gap:48px;align-items:center;
+  padding:56px 0 44px;
+}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:32px}
+  .hero .card-wrap{max-width:340px;margin:0 auto}
+}
 .hero h1{
   font-size:clamp(34px,5.2vw,58px);
   font-weight:600;line-height:1.08;letter-spacing:-.015em;
@@ -149,15 +156,8 @@ section{padding:44px 0}
 .note h3{font-size:17px;font-weight:600;margin-bottom:6px}
 .note p{color:var(--muted);font-size:15.5px}
 
-/* ---- about ---------------------------------------------------- */
-.about{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start}
-@media (max-width:720px){ .about{grid-template-columns:1fr} .card-wrap{max-width:280px;margin:0 auto} }
-.about p{color:var(--muted);max-width:60ch}
-.about p + p{margin-top:14px}
-.about strong{color:var(--ink);font-weight:600}
-
 /* ---- bio card (flip card) --------------------------------------- */
-.card-wrap{width:100%;max-width:300px}
+.card-wrap{width:100%;max-width:360px}
 .card-stage{position:relative;width:100%;aspect-ratio:375/525}
 .card-scale{
   position:absolute;top:0;left:0;width:375px;height:525px;
@@ -263,7 +263,6 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
       <a href="#capabilities">Capabilities</a>
       <a href="#process">Process</a>
       <a href="#quote">Quote</a>
-      <a href="#about">About</a>
     </nav>
   </div>
 </header>
@@ -272,16 +271,66 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
   <div class="inner">
 
     <div class="hero">
-      <span class="eyebrow">Mechanical Design · San Antonio, Texas</span>
-      <h1>Production-ready mechanical design, on demand.</h1>
-      <p class="lede">
-        Fifteen years designing mechanical systems — sheet metal, composites,
-        fixtures, and the CAD automation that keeps drawings moving. I help
-        fabrication shops and product teams get from concept to a complete,
-        buildable package without adding headcount.
-      </p>
-      <div class="cta-row">
-        <a class="btn" href="#quote">Request a Quote</a>
+      <div class="hero-copy">
+        <span class="eyebrow">Mechanical Design · San Antonio, Texas</span>
+        <h1>Production-ready mechanical design, on demand.</h1>
+        <p class="lede">
+          Fifteen years designing mechanical systems — sheet metal, composites,
+          fixtures, and the CAD automation that keeps drawings moving. I help
+          fabrication shops and product teams get from concept to a complete,
+          buildable package without adding headcount.
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="#quote">Request a Quote</a>
+        </div>
+      </div>
+
+      <div class="card-wrap" aria-hidden="true">
+        <div class="card-stage">
+          <div class="card-scale">
+            <div class="card" id="bio-card">
+              <div class="card-face card-front">
+                <div class="card-grid"></div>
+                <div class="card-border-outer"></div>
+                <div class="card-border-inner"></div>
+                <div class="card-glare"></div>
+                <div class="card-head">
+                  <div>
+                    <div class="name">ERIC FISHER</div>
+                    <div class="role">MECHANICAL DESIGNER</div>
+                  </div>
+                  <div class="rev">REV C<br>NTS</div>
+                </div>
+                <div class="card-photo">
+                  <img src="img/card-portrait.png" alt="Eric Fisher">
+                  <div class="fig">FIG. 1 — THE DESIGNER</div>
+                </div>
+                <div class="card-stats">
+                  <div class="card-stat"><span class="lbl">CAD</span><div class="bar" style="--pct:92%"></div><span class="val">92</span></div>
+                  <div class="card-stat"><span class="lbl">FEA / SIM</span><div class="bar" style="--pct:78%"></div><span class="val">78</span></div>
+                  <div class="card-stat"><span class="lbl">GD&amp;T</span><div class="bar" style="--pct:85%"></div><span class="val">85</span></div>
+                  <div class="card-stat"><span class="lbl">PROTOTYPING</span><div class="bar" style="--pct:88%"></div><span class="val">88</span></div>
+                  <div class="card-stat"><span class="lbl">DFM</span><div class="bar" style="--pct:80%"></div><span class="val">80</span></div>
+                  <div class="card-footer">
+                    <div><span class="lbl">DRAWN BY</span><br><span class="val">E. FISHER</span></div>
+                    <div><span class="lbl">DWG NO.</span><br><span class="val">EF-001</span></div>
+                    <div><span class="lbl">SCALE</span><br><span class="val">1:1</span></div>
+                  </div>
+                  <div class="card-quote">&ldquo;Measures twice, cuts once, iterates forever.&rdquo;</div>
+                </div>
+              </div>
+              <div class="card-face card-back">
+                <div class="card-grid"></div>
+                <div class="card-border-outer"></div>
+                <div class="card-border-inner"></div>
+                <div class="compass"><span class="monogram">EF</span></div>
+                <div class="dwg">DWG NO. EF-001</div>
+                <div class="rev-line">REV C · DO NOT SCALE DRAWING</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="card-hint">Move to tilt &middot; click to flip</p>
       </div>
     </div>
 
@@ -390,73 +439,6 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
         </form>
       </section>
     </div>
-
-    <section id="about">
-      <div class="sec-head"><h2>About</h2><div class="rule"></div></div>
-      <div class="about">
-        <div class="card-wrap" aria-hidden="true">
-          <div class="card-stage">
-            <div class="card-scale">
-              <div class="card" id="bio-card">
-                <div class="card-face card-front">
-                  <div class="card-grid"></div>
-                  <div class="card-border-outer"></div>
-                  <div class="card-border-inner"></div>
-                  <div class="card-glare"></div>
-                  <div class="card-head">
-                    <div>
-                      <div class="name">ERIC FISHER</div>
-                      <div class="role">MECHANICAL DESIGNER</div>
-                    </div>
-                    <div class="rev">REV C<br>NTS</div>
-                  </div>
-                  <div class="card-photo">
-                    <img src="img/card-portrait.png" alt="Eric Fisher">
-                    <div class="fig">FIG. 1 — THE DESIGNER</div>
-                  </div>
-                  <div class="card-stats">
-                    <div class="card-stat"><span class="lbl">CAD</span><div class="bar" style="--pct:92%"></div><span class="val">92</span></div>
-                    <div class="card-stat"><span class="lbl">FEA / SIM</span><div class="bar" style="--pct:78%"></div><span class="val">78</span></div>
-                    <div class="card-stat"><span class="lbl">GD&amp;T</span><div class="bar" style="--pct:85%"></div><span class="val">85</span></div>
-                    <div class="card-stat"><span class="lbl">PROTOTYPING</span><div class="bar" style="--pct:88%"></div><span class="val">88</span></div>
-                    <div class="card-stat"><span class="lbl">DFM</span><div class="bar" style="--pct:80%"></div><span class="val">80</span></div>
-                    <div class="card-footer">
-                      <div><span class="lbl">DRAWN BY</span><br><span class="val">E. FISHER</span></div>
-                      <div><span class="lbl">DWG NO.</span><br><span class="val">EF-001</span></div>
-                      <div><span class="lbl">SCALE</span><br><span class="val">1:1</span></div>
-                    </div>
-                    <div class="card-quote">&ldquo;Measures twice, cuts once, iterates forever.&rdquo;</div>
-                  </div>
-                </div>
-                <div class="card-face card-back">
-                  <div class="card-grid"></div>
-                  <div class="card-border-outer"></div>
-                  <div class="card-border-inner"></div>
-                  <div class="compass"><span class="monogram">EF</span></div>
-                  <div class="dwg">DWG NO. EF-001</div>
-                  <div class="rev-line">REV C · DO NOT SCALE DRAWING</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p class="card-hint">Move to tilt &middot; click to flip</p>
-        </div>
-        <div>
-          <p><strong>Eric Fisher</strong> is a mechanical designer based in
-             San Antonio, Texas, serving fabrication shops and engineering teams
-             along the I-35 corridor and remotely.</p>
-          <p>Fifteen years split between fabrication shops, OEM product
-             teams, and heavy-industrial plants — including cement and
-             aggregate operations running equipment that doesn't get to
-             stop for a redesign. Work has ranged from sheet metal
-             enclosures and conveyor systems to fixtures, tooling, and
-             industrial piping and sanitary tubing.</p>
-          <p>Fast turnaround, straight answers, and drawings that account
-             for what the shop floor can actually hold to tolerance.</p>
-          <p>Tools: SolidWorks · FreeCAD · Python · VBA</p>
-        </div>
-      </div>
-    </section>
 
   </div>
 </main>
