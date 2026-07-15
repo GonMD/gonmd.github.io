@@ -3,15 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- ============================================================
-     HOW TO USE THIS FILE
-     1. Search for [BRACKETED] placeholders and replace them.
-     2. Drop your images into an /img folder next to this file and
-        update the <img src="..."> paths. Each image slot has a
-        comment explaining what works best there.
-     3. Push to a GitHub repo named  <username>.github.io  (or any
-        repo with Pages enabled) and you're live.
-     ============================================================ -->
 <title>Eric Fisher — Mechanical Design &amp; CAD Automation</title>
 <meta name="description" content="Freelance mechanical design: legacy drawing recovery, sheet metal and composite DFM, fixtures and tooling, CAD automation. San Antonio, Texas.">
 <meta property="og:type" content="website">
@@ -59,7 +50,6 @@ body{
 .inner{width:100%;max-width:var(--max);margin:0 auto;padding:0 32px}
 @media (max-width:640px){ .inner{padding:0 20px} }
 
-.mono{font-family:'IBM Plex Mono',monospace}
 .eyebrow{
   font-family:'IBM Plex Mono',monospace;
   font-size:12px;letter-spacing:.14em;text-transform:uppercase;
@@ -150,8 +140,22 @@ section:last-of-type{border-bottom:none}
   font-family:'IBM Plex Mono',monospace;font-size:11.5px;
   color:var(--muted);padding:10px 4px 2px;letter-spacing:.04em;
 }
-.work-item h3{font-size:20px;font-weight:600;margin:6px 0 14px}
-.work-item dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px}
+.work-item h3{font-size:20px;font-weight:600;margin:0}
+.work-toggle{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  width:100%;margin:6px 0 0;padding:0;border:none;background:none;
+  font:inherit;color:inherit;text-align:left;cursor:pointer;
+}
+.work-toggle .chevron{
+  flex:none;width:9px;height:9px;margin-bottom:3px;
+  border-right:2px solid var(--steel);border-bottom:2px solid var(--steel);
+  transform:rotate(45deg);transition:transform .25s ease;
+}
+.work-toggle[aria-expanded="true"] .chevron{transform:rotate(-135deg)}
+.work-details{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.work-toggle[aria-expanded="true"] + .work-details{grid-template-rows:1fr}
+.work-details-inner{overflow:hidden}
+.work-item dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px;padding-top:14px}
 .work-item dt{
   font-family:'IBM Plex Mono',monospace;font-size:11.5px;
   letter-spacing:.1em;text-transform:uppercase;color:var(--steel);
@@ -230,7 +234,6 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
 <main id="top">
   <div class="inner">
 
-    <!-- ================= HERO ================= -->
     <div class="hero">
       <span class="eyebrow">Mechanical Design · San Antonio, Texas</span>
       <h1>Production-ready mechanical design, on demand.</h1>
@@ -246,7 +249,6 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
       </div>
     </div>
 
-    <!-- ================= CAPABILITIES ================= -->
     <section id="capabilities">
       <div class="sec-head"><h2>Capabilities</h2><div class="rule"></div></div>
       <div class="caps">
@@ -291,45 +293,50 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
       </div>
     </section>
 
-    <!-- ================= SELECTED WORK ================= -->
-    <!-- Replace each entry. Best format: a real problem, what you did,
-         and a measurable outcome. 2–4 entries is plenty. Only show
-         images you own the rights to — personal projects, demo pieces,
-         or client work with written permission. -->
     <section id="work">
       <div class="sec-head"><h2>Selected work</h2><div class="rule"></div></div>
 
       <div class="work-item">
         <figure class="figure">
-          <!-- Placeholder illustration. Replace with a real before/after
-               when you have one — this is your most persuasive image slot. -->
           <img src="img/project-3.svg" alt="Before and after: a faded, stained 1962 blueprint of a pulley beside a crisp rebuilt CAD drawing of the same part" width="1200" height="800">
           <figcaption>FIG. 1 — Legacy print rebuilt as a dimensioned CAD drawing (placeholder illustration)</figcaption>
         </figure>
         <div>
-          <h3>[Drawing rescue project title]</h3>
-          <dl>
-            <dt>Problem</dt><dd>[e.g. "Sole surviving print for a 1960s conveyor sheave was fading; plant couldn't quote replacement parts."]</dd>
-            <dt>Approach</dt><dd>[e.g. "Rebuilt the part as a 3D model from the scanned print plus field measurements; issued a new revision-controlled drawing package."]</dd>
-            <dt>Outcome</dt><dd>[e.g. "Part quoted by three local shops within a week; drawing now lives in the plant's document system."]</dd>
-          </dl>
+          <button class="work-toggle" aria-expanded="false">
+            <h3>[Drawing rescue project title]</h3>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+          <div class="work-details">
+            <div class="work-details-inner">
+              <dl>
+                <dt>Problem</dt><dd>[e.g. "Sole surviving print for a 1960s conveyor sheave was fading; plant couldn't quote replacement parts."]</dd>
+                <dt>Approach</dt><dd>[e.g. "Rebuilt the part as a 3D model from the scanned print plus field measurements; issued a new revision-controlled drawing package."]</dd>
+                <dt>Outcome</dt><dd>[e.g. "Part quoted by three local shops within a week; drawing now lives in the plant's document system."]</dd>
+              </dl>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="work-item">
         <figure class="figure">
-          <!-- Placeholder illustration. Automation work also shows well as a
-               before/after screenshot or a short GIF of a macro running. -->
           <img src="img/project-2.svg" alt="Flat pattern of a sheet metal motor mount bracket with bend lines and hole callouts, beside the formed part" width="1200" height="800">
           <figcaption>FIG. 2 — 11GA sheet metal bracket, flat pattern with bend callouts (placeholder illustration)</figcaption>
         </figure>
         <div>
-          <h3>[Sheet metal / DFM project title]</h3>
-          <dl>
-            <dt>Problem</dt><dd>[e.g. "Bracket design required welding; client wanted a single formed part their brake could handle."]</dd>
-            <dt>Approach</dt><dd>[e.g. "Redesigned as one flat pattern with corner reliefs and bend allowances matched to their tooling."]</dd>
-            <dt>Outcome</dt><dd>[e.g. "Part count 3 → 1; welding eliminated; unit cost down 40%."]</dd>
-          </dl>
+          <button class="work-toggle" aria-expanded="false">
+            <h3>[Sheet metal / DFM project title]</h3>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+          <div class="work-details">
+            <div class="work-details-inner">
+              <dl>
+                <dt>Problem</dt><dd>[e.g. "Bracket design required welding; client wanted a single formed part their brake could handle."]</dd>
+                <dt>Approach</dt><dd>[e.g. "Redesigned as one flat pattern with corner reliefs and bend allowances matched to their tooling."]</dd>
+                <dt>Outcome</dt><dd>[e.g. "Part count 3 → 1; welding eliminated; unit cost down 40%."]</dd>
+              </dl>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -339,17 +346,23 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
           <figcaption>FIG. 3 — 18T spur gear with section view (placeholder illustration)</figcaption>
         </figure>
         <div>
-          <h3>[Machined part / automation project title]</h3>
-          <dl>
-            <dt>Problem</dt><dd>[e.g. "Engineering team spent ~6 hrs/week exporting drawings and flat patterns by hand."]</dd>
-            <dt>Approach</dt><dd>[e.g. "SolidWorks VBA macro that detects sheet metal parts and batch-exports DXFs and PDFs."]</dd>
-            <dt>Outcome</dt><dd>[e.g. "Export time cut from hours to minutes; zero missed revisions since."]</dd>
-          </dl>
+          <button class="work-toggle" aria-expanded="false">
+            <h3>[Machined part / automation project title]</h3>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+          <div class="work-details">
+            <div class="work-details-inner">
+              <dl>
+                <dt>Problem</dt><dd>[e.g. "Engineering team spent ~6 hrs/week exporting drawings and flat patterns by hand."]</dd>
+                <dt>Approach</dt><dd>[e.g. "SolidWorks VBA macro that detects sheet metal parts and batch-exports DXFs and PDFs."]</dd>
+                <dt>Outcome</dt><dd>[e.g. "Export time cut from hours to minutes; zero missed revisions since."]</dd>
+              </dl>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= PROCESS ================= -->
     <section id="process">
       <div class="sec-head"><h2>How an engagement works</h2><div class="rule"></div></div>
       <div class="notes">
@@ -380,13 +393,10 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
       </div>
     </section>
 
-    <!-- ================= ABOUT ================= -->
     <section id="about">
       <div class="sec-head"><h2>About</h2><div class="rule"></div></div>
       <div class="about">
         <div class="portrait">
-          <!-- OPTIONAL portrait. If you skip it, delete this .portrait div;
-               the text will fill the width on its own. -->
           <img src="img/portrait.jpg" alt="Portrait of Eric Fisher" width="600" height="600">
         </div>
         <div>
@@ -409,7 +419,6 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
   </div>
 </main>
 
-<!-- ================= TITLE BLOCK / CONTACT ================= -->
 <footer id="contact">
   <div class="titleblock">
     <div class="tb-cell">
@@ -436,5 +445,13 @@ footer{margin-top:auto;border-top:1px solid var(--ink)}
 </footer>
 
 </div>
+<script>
+document.querySelectorAll('.work-toggle').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+  });
+});
+</script>
 </body>
 </html>
